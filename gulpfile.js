@@ -11,7 +11,9 @@ gulp.task("handlebars-preCompile", function(){
         pre_template_src = "src/js/pre-templates/";
 
     gulp.src(template_src+'*.handlebars')
-        .pipe(handlebars())
+        .pipe(handlebars({
+            handlebars: require('handlebars')
+        }))
         .pipe(wrap('Handlebars.template(<%= contents %>)'))
         .pipe(declare({
             namespace: 'Student.templates',
